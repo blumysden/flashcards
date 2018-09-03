@@ -12,7 +12,7 @@ class Table extends React.Component {
   }
 
   static defaultProps = {
-    upTo: 4,
+    upTo: 12,
     random: true
   }
 
