@@ -215,11 +215,12 @@ class App extends React.Component {
   }
 
   render() {
+    let upTo = (this.state.table > 12) ? this.state.table : 12;
     return <div>
       <nav>
         { this.toc.map(i => <span onClick={ this.selectTable } key={ `choose-${i}`} data-table={i}>{i}</span>) }
       </nav>
-      <Table base={this.state.table}/>
+      <Table base={this.state.table} upTo={upTo}/>
     </div>
   }
 }

@@ -20309,7 +20309,7 @@ if ('development' !== 'production') {
   // http://fb.me/prop-types-in-prod
   module.exports = require('./factoryWithThrowingShims')();
 }
-},{"./factoryWithTypeCheckers":21}],6:[function(require,module,exports) {
+},{"./factoryWithTypeCheckers":21}],3:[function(require,module,exports) {
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -20609,7 +20609,7 @@ Table.propTypes = {
   random: _propTypes2.default.bool.isRequired
 };
 Table.defaultProps = {
-  upTo: 4,
+  upTo: 12,
   random: true
 };
 
@@ -20642,6 +20642,7 @@ var App = function (_React$Component2) {
     value: function render() {
       var _this4 = this;
 
+      var upTo = this.state.table > 12 ? this.state.table : 12;
       return _react2.default.createElement(
         'div',
         null,
@@ -20656,7 +20657,7 @@ var App = function (_React$Component2) {
             );
           })
         ),
-        _react2.default.createElement(Table, { base: this.state.table })
+        _react2.default.createElement(Table, { base: this.state.table, upTo: upTo })
       );
     }
   }]);
@@ -20673,7 +20674,7 @@ App.defaultProps = {
 
 
 _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('content'));
-},{"react":11,"react-dom":12,"prop-types":13}],47:[function(require,module,exports) {
+},{"react":11,"react-dom":12,"prop-types":13}],30:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -20702,7 +20703,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '55734' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '62912' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -20843,5 +20844,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[47,6], null)
+},{}]},{},[30,3], null)
 //# sourceMappingURL=/src.b3ac38c4.map
