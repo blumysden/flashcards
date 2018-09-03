@@ -14,4 +14,20 @@ nav {
 
 .card {
   text-align: center;
-  font-size: 48px; }
+  font-size: 48px;
+  margin-top: 40px; }
+
+button {
+  margin-top: 20px;
+  font-size: 18px;
+  border: none;
+  background-color: #999;
+  color: #fff;
+  padding: 10px;
+  border-radius: 3px;
+  cursor: pointer; }
+  button.correct {
+    background-color: chartreuse;
+    margin-right: 10px; }
+  button.incorrect {
+    background-color: red; }

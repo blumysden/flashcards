@@ -18,13 +18,8 @@ class Table extends React.Component {
 
   constructor(props) {
     super(props);
-    const methods = ['clickNext', 'reveal', 'markRight', 'markWrong', 'clickStart']
-    this.state = {
-      attempts: [],
-      currentAttempt: [],
-      attempting: 0,
-      waiting: false
-    }
+    const methods = ['clickNext', 'reveal', 'markRight', 'markWrong', 'clickStart', 'clickDoWrongs']
+    this.state = this.defaultState;
     methods.forEach((n) => {
       this[n] = this[n].bind(this);
     })
@@ -40,15 +35,36 @@ class Table extends React.Component {
     return attempts[attempts.length - 1];
   }
 
-  componentDidMount() {
-    // this.start();
+  get defaultState() {
+    return Object.assign({}, {
+      attempts: [],
+      currentAttempt: [],
+      attempting: 0,
+      waiting: false
+    })
   }
 
-  newAttempt() {
+  componentDidMount() {
+    this.start();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.base != this.props.base) {
+      this.reset();
+    }
+  }
+
+  reset() {
+    this.setState(this.defaultState);
+    this.start();
+  }
+
+  newAttempt(retry) {
     const { upTo } = this.props;
-    const currentAttempt = new Array(upTo).fill(null).map((v, i) => i + 1)
+    const { correct=[], incorrect } = retry || {}
+    const currentAttempt = incorrect || new Array(upTo).fill(null).map((v, i) => i + 1)
     const attempts = this.state.attempts.concat([{
-      correct: [],
+      correct,
       incorrect: []
     }])
     this.setState({
@@ -57,8 +73,8 @@ class Table extends React.Component {
     })
   }
 
-  start() {
-    this.newAttempt();
+  start(attempt) {
+    this.newAttempt(attempt);
     window.setTimeout(() => {
       this.next();
     },0)
@@ -74,6 +90,11 @@ class Table extends React.Component {
     this.next();
   }
 
+  clickDoWrongs(e) {
+    e.preventDefault();
+    this.start(Object.assign({}, this.lastAttempt))
+  }
+
   reveal(e) {
     e.preventDefault()
     this.setState({waiting: false})
@@ -82,7 +103,6 @@ class Table extends React.Component {
   next() {
     let currentAttempt = this.state.currentAttempt.concat([]);
     let i = this.props.random ? Math.floor(Math.random() * currentAttempt.length - 1) + 1 : 0;
-    // debugger;
     let attempting = currentAttempt.splice(i, 1)[0]
     this.setState({
       attempting,
@@ -119,22 +139,18 @@ class Table extends React.Component {
   }
 
   renderResult() {
-    if (!this.state.waiting) {
+    if (!this.isComplete && !this.state.waiting) {
       return <React.Fragment>
-        <button onClick={ this.markRight }>I was right!</button>
-        <button onClick={ this.markWrong }>I was wrong.</button>
+        <button className="correct" onClick={ this.markRight }>I was right!</button>
+        <button className="incorrect" onClick={ this.markWrong }>I was wrong.</button>
       </React.Fragment>
     } else {
       return null;
     }
   }
 
-  renderStart() {
-    if (this.isComplete) {
-      return <button onClick={ this.clickStart }>START</button>
-    } else {
-      return null;
-    }
+  renderStart(text='START') {
+    return <button onClick={ this.clickStart }>{ text }</button>
   }
 
   renderScore() {
@@ -142,22 +158,35 @@ class Table extends React.Component {
     if (this.isComplete && lastAttempt) {
       return <div>
           <p>You got { lastAttempt.correct.length } right, and { lastAttempt.incorrect.length } wrong.</p>
+          { (lastAttempt.incorrect.length) ?
+            <button onClick={ this.clickDoWrongs }>Redo Incorrect Answers</button> : null
+          }
+          { this.renderStart('Start over') }
         </div>
     } else {
       return null;
     }
   }
 
+  renderProblem() {
+    if (!this.isComplete) {
+      const { base } = this.props;
+      const { attempting, waiting } = this.state;
+      return <React.Fragment>
+        <div className="problem">{base} x {attempting}</div>
+        <div className="answer">{ (waiting) ? '???' : attempting * base }</div>
+      </React.Fragment>
+    } else {
+      return null;
+    }
+  }
+
   render() {
-    const { base } = this.props;
-    const { attempting, waiting } = this.state;
     return <div className="card">
-      <div className="problem">{attempting} x {base}</div>
-      <div className="answer">{ (waiting) ? '???' : attempting * base }</div>
+      { this.renderProblem() }
       { this.renderReveal() }
       { this.renderResult() }
-      { this.renderStart() }
-      { this.renderScore()  }
+      { this.renderScore() }
     </div>
   }
 }

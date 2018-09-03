@@ -103,7 +103,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   // Override the current require with this new one
   return newRequire;
-})({22:[function(require,module,exports) {
+})({31:[function(require,module,exports) {
 /*
 object-assign
 (c) Sindre Sorhus
@@ -194,7 +194,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 	return to;
 };
-},{}],24:[function(require,module,exports) {
+},{}],33:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -248,7 +248,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 }
 
 module.exports = invariant;
-},{}],30:[function(require,module,exports) {
+},{}],34:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -266,7 +266,7 @@ if ('development' !== 'production') {
 }
 
 module.exports = emptyObject;
-},{}],33:[function(require,module,exports) {
+},{}],36:[function(require,module,exports) {
 "use strict";
 
 /**
@@ -303,7 +303,7 @@ emptyFunction.thatReturnsArgument = function (arg) {
 };
 
 module.exports = emptyFunction;
-},{}],27:[function(require,module,exports) {
+},{}],35:[function(require,module,exports) {
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -366,7 +366,7 @@ if ('development' !== 'production') {
 }
 
 module.exports = warning;
-},{"./emptyFunction":33}],19:[function(require,module,exports) {
+},{"./emptyFunction":36}],26:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -380,7 +380,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
 
-},{}],18:[function(require,module,exports) {
+},{}],25:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -459,7 +459,7 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 }
 
 module.exports = checkPropTypes;
-},{"./lib/ReactPropTypesSecret":19}],13:[function(require,module,exports) {
+},{"./lib/ReactPropTypesSecret":26}],20:[function(require,module,exports) {
 /** @license React v16.4.2
  * react.development.js
  *
@@ -1940,7 +1940,7 @@ if ('development' !== "production") {
     module.exports = react;
   })();
 }
-},{"object-assign":22,"fbjs/lib/invariant":24,"fbjs/lib/emptyObject":30,"fbjs/lib/warning":27,"fbjs/lib/emptyFunction":33,"prop-types/checkPropTypes":18}],7:[function(require,module,exports) {
+},{"object-assign":31,"fbjs/lib/invariant":33,"fbjs/lib/emptyObject":34,"fbjs/lib/warning":35,"fbjs/lib/emptyFunction":36,"prop-types/checkPropTypes":25}],11:[function(require,module,exports) {
 'use strict';
 
 if ('development' === 'production') {
@@ -1948,7 +1948,7 @@ if ('development' === 'production') {
 } else {
   module.exports = require('./cjs/react.development.js');
 }
-},{"./cjs/react.development.js":13}],28:[function(require,module,exports) {
+},{"./cjs/react.development.js":20}],37:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1982,7 +1982,7 @@ var ExecutionEnvironment = {
 };
 
 module.exports = ExecutionEnvironment;
-},{}],25:[function(require,module,exports) {
+},{}],38:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2019,7 +2019,7 @@ function getActiveElement(doc) /*?DOMElement*/{
 }
 
 module.exports = getActiveElement;
-},{}],26:[function(require,module,exports) {
+},{}],39:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2085,7 +2085,7 @@ function shallowEqual(objA, objB) {
 }
 
 module.exports = shallowEqual;
-},{}],50:[function(require,module,exports) {
+},{}],46:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2108,7 +2108,7 @@ function isNode(object) {
 }
 
 module.exports = isNode;
-},{}],45:[function(require,module,exports) {
+},{}],43:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2131,7 +2131,7 @@ function isTextNode(object) {
 }
 
 module.exports = isTextNode;
-},{"./isNode":50}],29:[function(require,module,exports) {
+},{"./isNode":46}],40:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2169,7 +2169,7 @@ function containsNode(outerNode, innerNode) {
 }
 
 module.exports = containsNode;
-},{"./isTextNode":45}],46:[function(require,module,exports) {
+},{"./isTextNode":43}],44:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2200,7 +2200,7 @@ function hyphenate(string) {
 }
 
 module.exports = hyphenate;
-},{}],32:[function(require,module,exports) {
+},{}],41:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2237,7 +2237,7 @@ function hyphenateStyleName(string) {
 }
 
 module.exports = hyphenateStyleName;
-},{"./hyphenate":46}],44:[function(require,module,exports) {
+},{"./hyphenate":44}],45:[function(require,module,exports) {
 "use strict";
 
 /**
@@ -2267,7 +2267,7 @@ function camelize(string) {
 }
 
 module.exports = camelize;
-},{}],31:[function(require,module,exports) {
+},{}],42:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2305,7 +2305,7 @@ function camelizeStyleName(string) {
 }
 
 module.exports = camelizeStyleName;
-},{"./camelize":44}],12:[function(require,module,exports) {
+},{"./camelize":45}],19:[function(require,module,exports) {
 /** @license React v16.4.2
  * react-dom.development.js
  *
@@ -19712,7 +19712,7 @@ if ('development' !== "production") {
     module.exports = reactDom;
   })();
 }
-},{"fbjs/lib/invariant":24,"react":7,"fbjs/lib/warning":27,"fbjs/lib/ExecutionEnvironment":28,"object-assign":22,"fbjs/lib/emptyFunction":33,"prop-types/checkPropTypes":18,"fbjs/lib/getActiveElement":25,"fbjs/lib/shallowEqual":26,"fbjs/lib/containsNode":29,"fbjs/lib/emptyObject":30,"fbjs/lib/hyphenateStyleName":32,"fbjs/lib/camelizeStyleName":31}],6:[function(require,module,exports) {
+},{"fbjs/lib/invariant":33,"react":11,"fbjs/lib/warning":35,"fbjs/lib/ExecutionEnvironment":37,"object-assign":31,"fbjs/lib/emptyFunction":36,"prop-types/checkPropTypes":25,"fbjs/lib/getActiveElement":38,"fbjs/lib/shallowEqual":39,"fbjs/lib/containsNode":40,"fbjs/lib/emptyObject":34,"fbjs/lib/hyphenateStyleName":41,"fbjs/lib/camelizeStyleName":42}],12:[function(require,module,exports) {
 'use strict';
 
 function checkDCE() {
@@ -19748,7 +19748,7 @@ if ('development' === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":12}],14:[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":19}],21:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -20285,7 +20285,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 
   return ReactPropTypes;
 };
-},{"object-assign":22,"./lib/ReactPropTypesSecret":19,"./checkPropTypes":18}],8:[function(require,module,exports) {
+},{"object-assign":31,"./lib/ReactPropTypesSecret":26,"./checkPropTypes":25}],13:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -20309,7 +20309,7 @@ if ('development' !== 'production') {
   // http://fb.me/prop-types-in-prod
   module.exports = require('./factoryWithThrowingShims')();
 }
-},{"./factoryWithTypeCheckers":14}],4:[function(require,module,exports) {
+},{"./factoryWithTypeCheckers":21}],6:[function(require,module,exports) {
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -20342,13 +20342,8 @@ var Table = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Table.__proto__ || Object.getPrototypeOf(Table)).call(this, props));
 
-    var methods = ['clickNext', 'reveal', 'markRight', 'markWrong', 'clickStart'];
-    _this.state = {
-      attempts: [],
-      currentAttempt: [],
-      attempting: 0,
-      waiting: false
-    };
+    var methods = ['clickNext', 'reveal', 'markRight', 'markWrong', 'clickStart', 'clickDoWrongs'];
+    _this.state = _this.defaultState;
     methods.forEach(function (n) {
       _this[n] = _this[n].bind(_this);
     });
@@ -20358,18 +20353,36 @@ var Table = function (_React$Component) {
   _createClass(Table, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      // this.start();
+      this.start();
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.base != this.props.base) {
+        this.reset();
+      }
+    }
+  }, {
+    key: 'reset',
+    value: function reset() {
+      this.setState(this.defaultState);
+      this.start();
     }
   }, {
     key: 'newAttempt',
-    value: function newAttempt() {
+    value: function newAttempt(retry) {
       var upTo = this.props.upTo;
 
-      var currentAttempt = new Array(upTo).fill(null).map(function (v, i) {
+      var _ref = retry || {},
+          _ref$correct = _ref.correct,
+          correct = _ref$correct === undefined ? [] : _ref$correct,
+          incorrect = _ref.incorrect;
+
+      var currentAttempt = incorrect || new Array(upTo).fill(null).map(function (v, i) {
         return i + 1;
       });
       var attempts = this.state.attempts.concat([{
-        correct: [],
+        correct: correct,
         incorrect: []
       }]);
       this.setState({
@@ -20379,10 +20392,10 @@ var Table = function (_React$Component) {
     }
   }, {
     key: 'start',
-    value: function start() {
+    value: function start(attempt) {
       var _this2 = this;
 
-      this.newAttempt();
+      this.newAttempt(attempt);
       window.setTimeout(function () {
         _this2.next();
       }, 0);
@@ -20400,6 +20413,12 @@ var Table = function (_React$Component) {
       this.next();
     }
   }, {
+    key: 'clickDoWrongs',
+    value: function clickDoWrongs(e) {
+      e.preventDefault();
+      this.start(Object.assign({}, this.lastAttempt));
+    }
+  }, {
     key: 'reveal',
     value: function reveal(e) {
       e.preventDefault();
@@ -20410,7 +20429,6 @@ var Table = function (_React$Component) {
     value: function next() {
       var currentAttempt = this.state.currentAttempt.concat([]);
       var i = this.props.random ? Math.floor(Math.random() * currentAttempt.length - 1) + 1 : 0;
-      // debugger;
       var attempting = currentAttempt.splice(i, 1)[0];
       this.setState({
         attempting: attempting,
@@ -20458,18 +20476,18 @@ var Table = function (_React$Component) {
   }, {
     key: 'renderResult',
     value: function renderResult() {
-      if (!this.state.waiting) {
+      if (!this.isComplete && !this.state.waiting) {
         return _react2.default.createElement(
           _react2.default.Fragment,
           null,
           _react2.default.createElement(
             'button',
-            { onClick: this.markRight },
+            { className: 'correct', onClick: this.markRight },
             'I was right!'
           ),
           _react2.default.createElement(
             'button',
-            { onClick: this.markWrong },
+            { className: 'incorrect', onClick: this.markWrong },
             'I was wrong.'
           )
         );
@@ -20480,15 +20498,13 @@ var Table = function (_React$Component) {
   }, {
     key: 'renderStart',
     value: function renderStart() {
-      if (this.isComplete) {
-        return _react2.default.createElement(
-          'button',
-          { onClick: this.clickStart },
-          'START'
-        );
-      } else {
-        return null;
-      }
+      var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'START';
+
+      return _react2.default.createElement(
+        'button',
+        { onClick: this.clickStart },
+        text
+      );
     }
   }, {
     key: 'renderScore',
@@ -20506,6 +20522,41 @@ var Table = function (_React$Component) {
             ' right, and ',
             lastAttempt.incorrect.length,
             ' wrong.'
+          ),
+          lastAttempt.incorrect.length ? _react2.default.createElement(
+            'button',
+            { onClick: this.clickDoWrongs },
+            'Redo Incorrect Answers'
+          ) : null,
+          this.renderStart('Start over')
+        );
+      } else {
+        return null;
+      }
+    }
+  }, {
+    key: 'renderProblem',
+    value: function renderProblem() {
+      if (!this.isComplete) {
+        var base = this.props.base;
+        var _state = this.state,
+            attempting = _state.attempting,
+            waiting = _state.waiting;
+
+        return _react2.default.createElement(
+          _react2.default.Fragment,
+          null,
+          _react2.default.createElement(
+            'div',
+            { className: 'problem' },
+            base,
+            ' x ',
+            attempting
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'answer' },
+            waiting ? '???' : attempting * base
           )
         );
       } else {
@@ -20515,29 +20566,12 @@ var Table = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var base = this.props.base;
-      var _state = this.state,
-          attempting = _state.attempting,
-          waiting = _state.waiting;
-
       return _react2.default.createElement(
         'div',
         { className: 'card' },
-        _react2.default.createElement(
-          'div',
-          { className: 'problem' },
-          attempting,
-          ' x ',
-          base
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'answer' },
-          waiting ? '???' : attempting * base
-        ),
+        this.renderProblem(),
         this.renderReveal(),
         this.renderResult(),
-        this.renderStart(),
         this.renderScore()
       );
     }
@@ -20553,6 +20587,16 @@ var Table = function (_React$Component) {
       var attempts = this.state.attempts;
 
       return attempts[attempts.length - 1];
+    }
+  }, {
+    key: 'defaultState',
+    get: function get() {
+      return Object.assign({}, {
+        attempts: [],
+        currentAttempt: [],
+        attempting: 0,
+        waiting: false
+      });
     }
   }]);
 
@@ -20629,7 +20673,7 @@ App.defaultProps = {
 
 
 _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('content'));
-},{"react":7,"react-dom":6,"prop-types":8}],52:[function(require,module,exports) {
+},{"react":11,"react-dom":12,"prop-types":13}],47:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -20658,7 +20702,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '57003' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '55734' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -20799,5 +20843,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[52,4], null)
+},{}]},{},[47,6], null)
 //# sourceMappingURL=/src.b3ac38c4.map
