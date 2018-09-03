@@ -20443,6 +20443,54 @@ var Table = function (_React$Component) {
       this.setState({ attempts: attempts });
     }
   }, {
+    key: 'renderReveal',
+    value: function renderReveal() {
+      if (this.state.waiting) {
+        return _react2.default.createElement(
+          'button',
+          { onClick: this.reveal },
+          'REVEAL ANSWER'
+        );
+      } else {
+        return null;
+      }
+    }
+  }, {
+    key: 'renderResult',
+    value: function renderResult() {
+      if (!this.state.waiting) {
+        return _react2.default.createElement(
+          _react2.default.Fragment,
+          null,
+          _react2.default.createElement(
+            'button',
+            { onClick: this.markRight },
+            'I was right!'
+          ),
+          _react2.default.createElement(
+            'button',
+            { onClick: this.markWrong },
+            'I was wrong.'
+          )
+        );
+      } else {
+        return null;
+      }
+    }
+  }, {
+    key: 'renderStart',
+    value: function renderStart() {
+      if (this.isComplete) {
+        return _react2.default.createElement(
+          'button',
+          { onClick: this.clickStart },
+          'START'
+        );
+      } else {
+        return null;
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
       var base = this.props.base;
@@ -20465,26 +20513,9 @@ var Table = function (_React$Component) {
           { className: 'answer' },
           waiting ? '???' : attempting * base
         ),
-        _react2.default.createElement(
-          'button',
-          { onClick: this.reveal, disabled: !waiting },
-          'REVEAL ANSWER'
-        ),
-        _react2.default.createElement(
-          'button',
-          { onClick: this.markRight, disabled: waiting },
-          'I was right!'
-        ),
-        _react2.default.createElement(
-          'button',
-          { onClick: this.markWrong, disabled: waiting },
-          'I was wrong.'
-        ),
-        _react2.default.createElement(
-          'button',
-          { onClick: this.clickStart },
-          'START'
-        )
+        this.renderReveal(),
+        this.renderResult(),
+        this.renderStart()
       );
     }
   }, {
@@ -20510,21 +20541,61 @@ Table.defaultProps = {
 var App = function (_React$Component2) {
   _inherits(App, _React$Component2);
 
-  function App() {
+  function App(props) {
     _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+    var _this3 = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+    _this3.toc = new Array(props.upTo).fill(null).map(function (v, i) {
+      return i + 1;
+    });
+    _this3.state = {
+      table: 1
+    };
+    _this3.selectTable = _this3.selectTable.bind(_this3);
+    return _this3;
   }
 
   _createClass(App, [{
+    key: 'selectTable',
+    value: function selectTable(e) {
+      var table = e.target.getAttribute('data-table');
+      this.setState({ table: parseInt(table) });
+    }
+  }, {
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(Table, { base: 5 });
+      var _this4 = this;
+
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'nav',
+          null,
+          this.toc.map(function (i) {
+            return _react2.default.createElement(
+              'span',
+              { onClick: _this4.selectTable, key: 'choose-' + i, 'data-table': i },
+              i
+            );
+          })
+        ),
+        _react2.default.createElement(Table, { base: this.state.table })
+      );
     }
   }]);
 
   return App;
 }(_react2.default.Component);
+
+App.propTypes = {
+  upTo: _propTypes2.default.number.isRequired
+};
+App.defaultProps = {
+  upTo: 20
+};
+
 
 _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('content'));
 },{"react":7,"react-dom":6,"prop-types":8}],52:[function(require,module,exports) {

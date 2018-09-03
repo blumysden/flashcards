@@ -1,0 +1,17 @@
+body {
+  font-size: 48px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; }
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; }
+  nav span {
+    padding: 5px;
+    font-size: 24px;
+    cursor: pointer; }
+    nav span:hover {
+      background-color: aqua; }
+
+.card {
+  text-align: center; }

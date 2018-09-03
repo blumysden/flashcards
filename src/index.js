@@ -104,23 +104,76 @@ class Table extends React.Component {
     this.setState({ attempts })
   }
 
+  renderReveal() {
+    if (this.state.waiting) {
+      return <button onClick={ this.reveal }>REVEAL ANSWER</button>
+    } else {
+      return null;
+    }
+  }
+
+  renderResult() {
+    if (!this.state.waiting) {
+      return <React.Fragment>
+        <button onClick={ this.markRight }>I was right!</button>
+        <button onClick={ this.markWrong }>I was wrong.</button>
+      </React.Fragment>
+    } else {
+      return null;
+    }
+  }
+
+  renderStart() {
+    if (this.isComplete) {
+      return <button onClick={ this.clickStart }>START</button>
+    } else {
+      return null;
+    }
+  }
+
   render() {
     const { base } = this.props;
     const { attempting, waiting } = this.state;
     return <div className="card">
       <div className="problem">{attempting} x {base}</div>
       <div className="answer">{ (waiting) ? '???' : attempting * base }</div>
-      <button onClick={ this.reveal } disabled={ !waiting }>REVEAL ANSWER</button>
-      <button onClick={ this.markRight } disabled={ waiting }>I was right!</button>
-      <button onClick={ this.markWrong } disabled={ waiting }>I was wrong.</button>
-      <button onClick={ this.clickStart }>START</button>
+      { this.renderReveal() }
+      { this.renderResult() }
+      { this.renderStart() }
     </div>
   }
 }
 
 class App extends React.Component {
+  static propTypes = {
+    upTo: PropTypes.number.isRequired
+  }
+
+  static defaultProps = {
+    upTo: 20
+  }
+
+  constructor(props) {
+    super(props);
+    this.toc = new Array(props.upTo).fill(null).map((v, i) => i + 1)
+    this.state = {
+      table: 1
+    }
+    this.selectTable = this.selectTable.bind(this)
+  }
+
+  selectTable(e) {
+    let table = e.target.getAttribute('data-table')
+    this.setState({table: parseInt(table)})
+  }
+
   render() {
-    return <Table base={5}/>
+    return <div>
+      <nav>
+        { this.toc.map(i => <span onClick={ this.selectTable } key={ `choose-${i}`} data-table={i}>{i}</span>) }
+      </nav>
+      <Table base={this.state.table}/>
+    </div>
   }
 }
 
