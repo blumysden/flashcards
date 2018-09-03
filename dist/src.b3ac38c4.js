@@ -194,7 +194,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 	return to;
 };
-},{}],26:[function(require,module,exports) {
+},{}],24:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -248,7 +248,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 }
 
 module.exports = invariant;
-},{}],31:[function(require,module,exports) {
+},{}],30:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -266,7 +266,7 @@ if ('development' !== 'production') {
 }
 
 module.exports = emptyObject;
-},{}],27:[function(require,module,exports) {
+},{}],33:[function(require,module,exports) {
 "use strict";
 
 /**
@@ -303,7 +303,7 @@ emptyFunction.thatReturnsArgument = function (arg) {
 };
 
 module.exports = emptyFunction;
-},{}],24:[function(require,module,exports) {
+},{}],27:[function(require,module,exports) {
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -366,7 +366,7 @@ if ('development' !== 'production') {
 }
 
 module.exports = warning;
-},{"./emptyFunction":27}],19:[function(require,module,exports) {
+},{"./emptyFunction":33}],19:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1940,7 +1940,7 @@ if ('development' !== "production") {
     module.exports = react;
   })();
 }
-},{"object-assign":22,"fbjs/lib/invariant":26,"fbjs/lib/emptyObject":31,"fbjs/lib/warning":24,"fbjs/lib/emptyFunction":27,"prop-types/checkPropTypes":18}],7:[function(require,module,exports) {
+},{"object-assign":22,"fbjs/lib/invariant":24,"fbjs/lib/emptyObject":30,"fbjs/lib/warning":27,"fbjs/lib/emptyFunction":33,"prop-types/checkPropTypes":18}],7:[function(require,module,exports) {
 'use strict';
 
 if ('development' === 'production') {
@@ -1948,7 +1948,7 @@ if ('development' === 'production') {
 } else {
   module.exports = require('./cjs/react.development.js');
 }
-},{"./cjs/react.development.js":13}],25:[function(require,module,exports) {
+},{"./cjs/react.development.js":13}],28:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1982,7 +1982,7 @@ var ExecutionEnvironment = {
 };
 
 module.exports = ExecutionEnvironment;
-},{}],28:[function(require,module,exports) {
+},{}],25:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2019,7 +2019,7 @@ function getActiveElement(doc) /*?DOMElement*/{
 }
 
 module.exports = getActiveElement;
-},{}],29:[function(require,module,exports) {
+},{}],26:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2108,7 +2108,7 @@ function isNode(object) {
 }
 
 module.exports = isNode;
-},{}],44:[function(require,module,exports) {
+},{}],45:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2131,7 +2131,7 @@ function isTextNode(object) {
 }
 
 module.exports = isTextNode;
-},{"./isNode":50}],30:[function(require,module,exports) {
+},{"./isNode":50}],29:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2169,7 +2169,7 @@ function containsNode(outerNode, innerNode) {
 }
 
 module.exports = containsNode;
-},{"./isTextNode":44}],45:[function(require,module,exports) {
+},{"./isTextNode":45}],46:[function(require,module,exports) {
 'use strict';
 
 /**
@@ -2237,7 +2237,7 @@ function hyphenateStyleName(string) {
 }
 
 module.exports = hyphenateStyleName;
-},{"./hyphenate":45}],46:[function(require,module,exports) {
+},{"./hyphenate":46}],44:[function(require,module,exports) {
 "use strict";
 
 /**
@@ -2267,7 +2267,7 @@ function camelize(string) {
 }
 
 module.exports = camelize;
-},{}],33:[function(require,module,exports) {
+},{}],31:[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2305,7 +2305,7 @@ function camelizeStyleName(string) {
 }
 
 module.exports = camelizeStyleName;
-},{"./camelize":46}],12:[function(require,module,exports) {
+},{"./camelize":44}],12:[function(require,module,exports) {
 /** @license React v16.4.2
  * react-dom.development.js
  *
@@ -19712,7 +19712,7 @@ if ('development' !== "production") {
     module.exports = reactDom;
   })();
 }
-},{"fbjs/lib/invariant":26,"react":7,"fbjs/lib/warning":24,"fbjs/lib/ExecutionEnvironment":25,"object-assign":22,"fbjs/lib/emptyFunction":27,"prop-types/checkPropTypes":18,"fbjs/lib/getActiveElement":28,"fbjs/lib/shallowEqual":29,"fbjs/lib/containsNode":30,"fbjs/lib/emptyObject":31,"fbjs/lib/hyphenateStyleName":32,"fbjs/lib/camelizeStyleName":33}],6:[function(require,module,exports) {
+},{"fbjs/lib/invariant":24,"react":7,"fbjs/lib/warning":27,"fbjs/lib/ExecutionEnvironment":28,"object-assign":22,"fbjs/lib/emptyFunction":33,"prop-types/checkPropTypes":18,"fbjs/lib/getActiveElement":25,"fbjs/lib/shallowEqual":26,"fbjs/lib/containsNode":29,"fbjs/lib/emptyObject":30,"fbjs/lib/hyphenateStyleName":32,"fbjs/lib/camelizeStyleName":31}],6:[function(require,module,exports) {
 'use strict';
 
 function checkDCE() {
@@ -20342,19 +20342,23 @@ var Table = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Table.__proto__ || Object.getPrototypeOf(Table)).call(this, props));
 
+    var methods = ['clickNext', 'reveal', 'markRight', 'markWrong', 'clickStart'];
     _this.state = {
       attempts: [],
       currentAttempt: [],
-      attempting: 0
+      attempting: 0,
+      waiting: false
     };
-    _this.clickNext = _this.clickNext.bind(_this);
+    methods.forEach(function (n) {
+      _this[n] = _this[n].bind(_this);
+    });
     return _this;
   }
 
   _createClass(Table, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      this.start();
+      // this.start();
     }
   }, {
     key: 'newAttempt',
@@ -20376,15 +20380,30 @@ var Table = function (_React$Component) {
   }, {
     key: 'start',
     value: function start() {
+      var _this2 = this;
+
       this.newAttempt();
-      // console.log('start with state', this.state);
-      // this.next();
+      window.setTimeout(function () {
+        _this2.next();
+      }, 0);
+    }
+  }, {
+    key: 'clickStart',
+    value: function clickStart(e) {
+      e.preventDefault();
+      this.start();
     }
   }, {
     key: 'clickNext',
     value: function clickNext(e) {
       e.preventDefault();
       this.next();
+    }
+  }, {
+    key: 'reveal',
+    value: function reveal(e) {
+      e.preventDefault();
+      this.setState({ waiting: false });
     }
   }, {
     key: 'next',
@@ -20395,23 +20414,41 @@ var Table = function (_React$Component) {
       var attempting = currentAttempt.splice(i, 1)[0];
       this.setState({
         attempting: attempting,
-        currentAttempt: currentAttempt
+        currentAttempt: currentAttempt,
+        waiting: true
       });
-      console.log('this.state.curretAttempt', this.state.currentAttempt);
+    }
+  }, {
+    key: 'markRight',
+    value: function markRight(e) {
+      e.preventDefault();
+      this.mark(true);
+      this.next();
+    }
+  }, {
+    key: 'markWrong',
+    value: function markWrong(e) {
+      e.preventDefault();
+      this.mark(false);
+      this.next();
     }
   }, {
     key: 'mark',
     value: function mark() {
       var correct = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
 
+      var attempts = this.state.attempts.concat([]);
       var update = correct ? 'correct' : 'incorrect';
-      this.attempts[this.attempts.lastIndexOf][update].push(this.attempting);
+      attempts[attempts.length - 1][update].push(this.state.attempting);
+      this.setState({ attempts: attempts });
     }
   }, {
     key: 'render',
     value: function render() {
       var base = this.props.base;
-      var attempting = this.state.attempting;
+      var _state = this.state,
+          attempting = _state.attempting,
+          waiting = _state.waiting;
 
       return _react2.default.createElement(
         'div',
@@ -20426,12 +20463,27 @@ var Table = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'answer' },
-          attempting * base
+          waiting ? '???' : attempting * base
         ),
         _react2.default.createElement(
           'button',
-          { onClick: this.clickNext, disabled: this.isComplete },
-          'NEXT'
+          { onClick: this.reveal, disabled: !waiting },
+          'REVEAL ANSWER'
+        ),
+        _react2.default.createElement(
+          'button',
+          { onClick: this.markRight, disabled: waiting },
+          'I was right!'
+        ),
+        _react2.default.createElement(
+          'button',
+          { onClick: this.markWrong, disabled: waiting },
+          'I was wrong.'
+        ),
+        _react2.default.createElement(
+          'button',
+          { onClick: this.clickStart },
+          'START'
         )
       );
     }
@@ -20504,7 +20556,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49308' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '57003' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

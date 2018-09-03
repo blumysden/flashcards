@@ -18,12 +18,16 @@ class Table extends React.Component {
 
   constructor(props) {
     super(props);
+    const methods = ['clickNext', 'reveal', 'markRight', 'markWrong', 'clickStart']
     this.state = {
       attempts: [],
       currentAttempt: [],
-      attempting: 0
+      attempting: 0,
+      waiting: false
     }
-    this.clickNext = this.clickNext.bind(this);
+    methods.forEach((n) => {
+      this[n] = this[n].bind(this);
+    })
   }
 
   get isComplete() {
@@ -31,7 +35,7 @@ class Table extends React.Component {
   }
 
   componentDidMount() {
-    this.start();
+    // this.start();
   }
 
   newAttempt() {
@@ -49,13 +53,24 @@ class Table extends React.Component {
 
   start() {
     this.newAttempt();
-    // console.log('start with state', this.state);
-    // this.next();
+    window.setTimeout(() => {
+      this.next();
+    },0)
+  }
+
+  clickStart(e) {
+    e.preventDefault();
+    this.start();
   }
 
   clickNext(e) {
     e.preventDefault();
     this.next();
+  }
+
+  reveal(e) {
+    e.preventDefault()
+    this.setState({waiting: false})
   }
 
   next() {
@@ -65,23 +80,40 @@ class Table extends React.Component {
     let attempting = currentAttempt.splice(i, 1)[0]
     this.setState({
       attempting,
-      currentAttempt
+      currentAttempt,
+      waiting: true
     })
-    console.log('this.state.curretAttempt', this.state.currentAttempt);
+  }
+
+  markRight(e) {
+    e.preventDefault()
+    this.mark(true);
+    this.next();
+  }
+
+  markWrong(e) {
+    e.preventDefault()
+    this.mark(false);
+    this.next();
   }
 
   mark(correct=true) {
+    const attempts = this.state.attempts.concat([]);
     const update = (correct) ? 'correct' : 'incorrect';
-    this.attempts[this.attempts.lastIndexOf][update].push(this.attempting);
+    attempts[attempts.length - 1][update].push(this.state.attempting);
+    this.setState({ attempts })
   }
 
   render() {
     const { base } = this.props;
-    const { attempting } = this.state;
+    const { attempting, waiting } = this.state;
     return <div className="card">
       <div className="problem">{attempting} x {base}</div>
-      <div className="answer">{ attempting * base }</div>
-      <button onClick={ this.clickNext } disabled={ this.isComplete }>NEXT</button>
+      <div className="answer">{ (waiting) ? '???' : attempting * base }</div>
+      <button onClick={ this.reveal } disabled={ !waiting }>REVEAL ANSWER</button>
+      <button onClick={ this.markRight } disabled={ waiting }>I was right!</button>
+      <button onClick={ this.markWrong } disabled={ waiting }>I was wrong.</button>
+      <button onClick={ this.clickStart }>START</button>
     </div>
   }
 }
