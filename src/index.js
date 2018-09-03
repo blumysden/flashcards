@@ -12,7 +12,7 @@ class Table extends React.Component {
   }
 
   static defaultProps = {
-    upTo: 12,
+    upTo: 4,
     random: true
   }
 
@@ -31,7 +31,13 @@ class Table extends React.Component {
   }
 
   get isComplete() {
-    return !this.state.currentAttempt.length;
+    const lastAttempt = this.lastAttempt;
+    return !this.state.currentAttempt.length && (!lastAttempt || lastAttempt.correct.length + lastAttempt.incorrect.length === this.props.upTo);
+  }
+
+  get lastAttempt() {
+    const { attempts } = this.state
+    return attempts[attempts.length - 1];
   }
 
   componentDidMount() {
@@ -131,6 +137,17 @@ class Table extends React.Component {
     }
   }
 
+  renderScore() {
+    const lastAttempt = this.lastAttempt
+    if (this.isComplete && lastAttempt) {
+      return <div>
+          <p>You got { lastAttempt.correct.length } right, and { lastAttempt.incorrect.length } wrong.</p>
+        </div>
+    } else {
+      return null;
+    }
+  }
+
   render() {
     const { base } = this.props;
     const { attempting, waiting } = this.state;
@@ -140,6 +157,7 @@ class Table extends React.Component {
       { this.renderReveal() }
       { this.renderResult() }
       { this.renderStart() }
+      { this.renderScore()  }
     </div>
   }
 }

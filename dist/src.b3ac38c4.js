@@ -20491,6 +20491,28 @@ var Table = function (_React$Component) {
       }
     }
   }, {
+    key: 'renderScore',
+    value: function renderScore() {
+      var lastAttempt = this.lastAttempt;
+      if (this.isComplete && lastAttempt) {
+        return _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'p',
+            null,
+            'You got ',
+            lastAttempt.correct.length,
+            ' right, and ',
+            lastAttempt.incorrect.length,
+            ' wrong.'
+          )
+        );
+      } else {
+        return null;
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
       var base = this.props.base;
@@ -20515,13 +20537,22 @@ var Table = function (_React$Component) {
         ),
         this.renderReveal(),
         this.renderResult(),
-        this.renderStart()
+        this.renderStart(),
+        this.renderScore()
       );
     }
   }, {
     key: 'isComplete',
     get: function get() {
-      return !this.state.currentAttempt.length;
+      var lastAttempt = this.lastAttempt;
+      return !this.state.currentAttempt.length && (!lastAttempt || lastAttempt.correct.length + lastAttempt.incorrect.length === this.props.upTo);
+    }
+  }, {
+    key: 'lastAttempt',
+    get: function get() {
+      var attempts = this.state.attempts;
+
+      return attempts[attempts.length - 1];
     }
   }]);
 
@@ -20534,7 +20565,7 @@ Table.propTypes = {
   random: _propTypes2.default.bool.isRequired
 };
 Table.defaultProps = {
-  upTo: 12,
+  upTo: 4,
   random: true
 };
 

@@ -1,5 +1,4 @@
 body {
-  font-size: 48px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; }
 
 nav {
@@ -14,4 +13,5 @@ nav {
       background-color: aqua; }
 
 .card {
-  text-align: center; }
+  text-align: center;
+  font-size: 48px; }
